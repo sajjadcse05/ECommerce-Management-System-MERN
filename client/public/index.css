@@ -1,0 +1,13 @@
+:root {
+  --primary-green: #2d4a3e;
+  --accent-yellow: #fdfbd4;
+  --bg-cream: #f9f8f3;
+  --text-main: #1a1a1a;
+  --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif; /* A clean, modern font */
+}
