@@ -2,9 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ProductSection from './components/ProductSection'; // Import the sliding component
+import ProductSection from './components/ProductSection';
 import Categories from './components/Categories';
 import Newsletter from './components/Newsletter';
+import Login from './components/Login';
+import Register from './components/Register'; // Added Register import
 
 function App() {
   return (
@@ -16,19 +18,25 @@ function App() {
         {/* Main Home Route */}
         <Route path="/" element={
           <main style={{ backgroundColor: '#f9f8f3' }}>
-            {/* Auto-sliding Hero Section (smaller size) */}
+            {/* Auto-sliding Hero Section */}
             <Hero />
             
             {/* The Bestselling Products Section with the 3-item Slider */}
             <ProductSection />
 
-            {/* Category Grid (CupEco, NatureSip, etc.) */}
+            {/* Category Grid */}
             <Categories />
 
-            {/* Newsletter Subscription */}
+            {/* Newsletter Subscription Footer */}
             <Newsletter />
           </main>
         } />
+
+        {/* Login Route */}
+        <Route path="/login" element={<Login />} />
+
+        {/* Register Route */}
+        <Route path="/register" element={<Register />} />
 
         {/* Cart Route */}
         <Route path="/cart" element={
@@ -38,8 +46,6 @@ function App() {
           </div>
         } />
       </Routes>
-
-      {/* Footer can be added here later */}
     </Router>
   );
 }

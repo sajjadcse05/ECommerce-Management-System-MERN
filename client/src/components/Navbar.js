@@ -24,14 +24,17 @@ const Navbar = () => {
 
         {/* User Actions */}
         <div style={actionGroupStyle}>
-          <Link to="/login" style={navLinkStyle}>Login</Link>
-          <Link to="/about" style={navLinkStyle}>About</Link>
-          <Link to="/contact" style={navLinkStyle}>Contact</Link>
-          <Link to="/cart" style={cartIconStyle}>
-            🛒
-            <span style={cartBadgeStyle}>0</span>
-          </Link>
-        </div>
+  {/* Update this line to use Link and to="/login" */}
+  <Link to="/login" style={navLinkStyle}>Login</Link>
+  
+  <Link to="/about" style={navLinkStyle}>About</Link>
+  <Link to="/contact" style={navLinkStyle}>Contact</Link>
+  
+  <Link to="/cart" style={cartIconStyle}>
+    🛒
+    <span style={cartBadgeStyle}>0</span>
+  </Link>
+</div>
       </div>
 
       {/* Bottom Section: Category Navigation */}
