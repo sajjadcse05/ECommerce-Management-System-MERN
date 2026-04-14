@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -6,9 +6,28 @@ import ProductSection from './components/ProductSection';
 import Categories from './components/Categories';
 import Newsletter from './components/Newsletter';
 import Login from './components/Login';
-import Register from './components/Register'; // Added Register import
+import Register from './components/Register';
 
 function App() {
+  // 1. Create state to hold your backend products
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // 2. Fetch data from backend on mount
+  useEffect(() => {
+    // Note: This uses the proxy defined in your client/package.json
+    fetch('/api/products') 
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Backend connection error:", err);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <Router>
       {/* Zulexia Premium Navbar */}
@@ -21,8 +40,12 @@ function App() {
             {/* Auto-sliding Hero Section */}
             <Hero />
             
-            {/* The Bestselling Products Section with the 3-item Slider */}
-            <ProductSection />
+            {/* Pass the fetched products to your ProductSection */}
+            {loading ? (
+              <div style={{ textAlign: 'center', padding: '50px' }}>Loading Collection...</div>
+            ) : (
+              <ProductSection products={products} />
+            )}
 
             {/* Category Grid */}
             <Categories />

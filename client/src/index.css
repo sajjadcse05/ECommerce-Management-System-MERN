@@ -1,16 +1,86 @@
+/* --- Zulexia Global Styles --- */
+
+:root {
+  --primary-green: #2d4a3e;     /* Deep Forest Green */
+  --accent-gold: #c5a059;       /* Soft Gold for accents */
+  --bg-cream: #f9f8f3;          /* Off-white/Cream background */
+  --text-main: #333333;
+  --transition: 0.3s ease-in-out;
+}
+
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f7f6;
+  background-color: var(--bg-cream);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Serif headers for a premium, academic feel */
+h1, h2, h3, h4 {
+  font-family: 'Georgia', serif;
+  color: var(--primary-green);
+  font-weight: 600;
+}
+
+/* --- Global Inputs --- */
+input, textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #fff;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary-green);
+}
+
+/* --- Global Button Styling --- */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  transition: var(--transition);
 }
 
 button:hover {
-  background-color: #2980b9 !important;
-  transition: 0.3s;
+  /* Using your specific hover color with a smoother transition */
+  background-color: #2980b9 !important; 
+  transform: translateY(-1px);
 }
 
-input, textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+/* --- Utility Classes --- */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Scrollbar styling for a cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-green);
 }
