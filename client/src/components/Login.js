@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Hook for programmatic navigation
+
+  // Define your special Admin email here
+  const ADMIN_EMAIL = "admin@zulexia.com";
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Logging in with:", email, password);
-    // Future: Add your MERN backend login logic here
+    
+    // Check for Admin Email
+    if (email.toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+      console.log("Admin login detected. Redirecting to Admin Panel...");
+      navigate('/admin-panel'); // Path to your future Admin Dashboard
+    } else {
+      console.log("Customer login detected. Redirecting to Homepage...");
+      navigate('/'); // Redirect customer to shop home
+    }
   };
 
   return (
@@ -51,8 +63,8 @@ const Login = () => {
         </form>
 
         <p style={footerTextStyle}>
-  Don't have an account? <Link to="/register" style={boldLinkStyle}>Create one</Link>
-</p>
+          Don't have an account? <Link to="/register" style={boldLinkStyle}>Create one</Link>
+        </p>
       </div>
     </div>
   );
@@ -65,7 +77,7 @@ const pageContainer = {
   justifyContent: 'center',
   alignItems: 'center',
   minHeight: '80vh',
-  backgroundColor: '#f9f8f3', // Luxury Cream
+  backgroundColor: '#f9f8f3',
   padding: '20px'
 };
 
@@ -82,7 +94,7 @@ const loginCard = {
 const titleStyle = {
   fontFamily: 'serif',
   fontSize: '2rem',
-  color: '#2d4a3e', // Deep Emerald
+  color: '#2d4a3e',
   margin: '0 0 10px 0'
 };
 
@@ -130,7 +142,7 @@ const loginButtonStyle = {
   padding: '14px',
   borderRadius: '12px',
   border: 'none',
-  backgroundColor: '#2d4a3e', // Deep Emerald
+  backgroundColor: '#2d4a3e',
   color: '#ffffff',
   fontSize: '1rem',
   fontWeight: 'bold',
